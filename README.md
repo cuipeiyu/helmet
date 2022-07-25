@@ -6,9 +6,9 @@
 | Module | Default | Option Function | Docs |
 | --- | --- | --- | --- |
 | ``Content-Security-Policy[-Report-Only]`` | ``default-src 'self'; object-src 'none'; child-src https:;`` | ``WithContentSecurityPolicyReportOnly(bool)`` <br> ``WithContentSecurityPolicyDirectives(string)`` | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) |
-| ``Cross-Origin-Embedder-Policy`` | ``require-corp`` | ``WithCrossOriginEmbedderPolicy(enum)`` | - |
-| ``Cross-Origin-Opener-Policy`` | ``same-origin`` | ``WithCrossOriginOpenerPolicy(enum)`` | - |
-| ``Cross-Origin-Resource-Policy`` | ``same-origin`` | ``WithCrossOriginResourcePolicy(enum)`` | - |
+| ``Cross-Origin-Embedder-Policy`` | - | ``WithCrossOriginEmbedderPolicy(enum)`` | - |
+| ``Cross-Origin-Opener-Policy`` | - | ``WithCrossOriginOpenerPolicy(enum)`` | - |
+| ``Cross-Origin-Resource-Policy`` | - | ``WithCrossOriginResourcePolicy(enum)`` | - |
 | ``Expect-CT`` | ``max-age:0`` | ``WithExpectCTMaxAge(time.Duration)`` <br> ``WithExpectCTEnforce(bool)`` <br> ``WithExpectCTReportUri(string)`` | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expect-CT) |
 | ``Origin-Agent-Cluster`` | ``?1`` | - | - |
 | ``Referrer-Policy`` | ``no-referrer`` | ``WithReferrerPolicyDirectives([]enum)`` | [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) |

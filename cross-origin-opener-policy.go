@@ -35,7 +35,7 @@ func NewCrossOriginOpenerPolicy(funs ...OptionFunc) *CrossOriginOpenerPolicy {
 		opt: &Option{
 			enable: true,
 
-			crossOriginOpenerPolicy: CrossOriginOpenerPolicySameOrigin,
+			crossOriginOpenerPolicy: "",
 		},
 	}
 
@@ -49,7 +49,7 @@ func NewCrossOriginOpenerPolicy(funs ...OptionFunc) *CrossOriginOpenerPolicy {
 var _ http.Handler = (*CrossOriginOpenerPolicy)(nil)
 
 func (h *CrossOriginOpenerPolicy) ServeHTTP(rw http.ResponseWriter, _ *http.Request) {
-	if h.opt.enable {
+	if h.opt.enable && h.opt.crossOriginOpenerPolicy != "" {
 		rw.Header().Set(HeaderCrossOriginOpenerPolicy, string(h.opt.crossOriginOpenerPolicy))
 	}
 }

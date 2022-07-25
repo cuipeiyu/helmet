@@ -34,7 +34,7 @@ func NewCrossOriginEmbedderPolicy(funs ...OptionFunc) *CrossOriginEmbedderPolicy
 		opt: &Option{
 			enable: true,
 
-			crossOriginEmbedderPolicy: CrossOriginEmbedderPolicyRequireCorp,
+			crossOriginEmbedderPolicy: "",
 		},
 	}
 
@@ -48,7 +48,7 @@ func NewCrossOriginEmbedderPolicy(funs ...OptionFunc) *CrossOriginEmbedderPolicy
 var _ http.Handler = (*CrossOriginEmbedderPolicy)(nil)
 
 func (h *CrossOriginEmbedderPolicy) ServeHTTP(rw http.ResponseWriter, _ *http.Request) {
-	if h.opt.enable {
+	if h.opt.enable && h.opt.crossOriginEmbedderPolicy != "" {
 		rw.Header().Set(HeaderCrossOriginEmbedderPolicy, string(h.opt.crossOriginEmbedderPolicy))
 	}
 }

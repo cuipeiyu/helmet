@@ -35,7 +35,7 @@ func NewCrossOriginResourcePolicy(funs ...OptionFunc) *CrossOriginResourcePolicy
 		opt: &Option{
 			enable: true,
 
-			crossOriginResourcePolicy: CrossOriginResourcePolicySameOrigin,
+			crossOriginResourcePolicy: "",
 		},
 	}
 
@@ -49,7 +49,7 @@ func NewCrossOriginResourcePolicy(funs ...OptionFunc) *CrossOriginResourcePolicy
 var _ http.Handler = (*CrossOriginResourcePolicy)(nil)
 
 func (h *CrossOriginResourcePolicy) ServeHTTP(rw http.ResponseWriter, _ *http.Request) {
-	if h.opt.enable {
+	if h.opt.enable && h.opt.crossOriginResourcePolicy != "" {
 		rw.Header().Set(HeaderCrossOriginResourcePolicy, string(h.opt.crossOriginResourcePolicy))
 	}
 }
