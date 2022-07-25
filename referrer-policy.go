@@ -62,6 +62,8 @@ var _ http.Handler = (*ReferrerPolicy)(nil)
 
 func (h *ReferrerPolicy) ServeHTTP(rw http.ResponseWriter, _ *http.Request) {
 	if h.opt.enable {
-		rw.Header().Set(HeaderReferrerPolicy, h.directives)
+		if h.directives != "" {
+			rw.Header().Set(HeaderReferrerPolicy, h.directives)
+		}
 	}
 }
