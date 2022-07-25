@@ -16,6 +16,7 @@ package helmet
 
 import (
 	"net/http"
+	"strings"
 )
 
 const HeaderReferrerPolicy = "Referrer-Policy"
@@ -51,9 +52,14 @@ func NewReferrerPolicy(funs ...OptionFunc) *ReferrerPolicy {
 		fun(f.opt)
 	}
 
-	for _, v := range f.opt.referrerPolicyDirectives {
-		f.directives += string(v) + ", "
+	for i, v := range f.opt.referrerPolicyDirectives {
+		f.directives += string(v)
+		if i < len(f.opt.referrerPolicyDirectives)-1 {
+			f.directives += ", "
+		}
 	}
+
+	f.directives = strings.TrimSpace(f.directives)
 
 	return f
 }
