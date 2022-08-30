@@ -54,7 +54,7 @@ func NewContentSecurityPolicy(funs ...OptionFunc) *ContentSecurityPolicy {
 var _ http.Handler = (*ContentSecurityPolicy)(nil)
 
 func (h *ContentSecurityPolicy) ServeHTTP(rw http.ResponseWriter, _ *http.Request) {
-	if h.opt.enable {
+	if h.opt.enable && h.opt.contentSecurityPolicyDirectives != "" {
 		rw.Header().Set(h.headerKey, h.opt.contentSecurityPolicyDirectives)
 	}
 }
